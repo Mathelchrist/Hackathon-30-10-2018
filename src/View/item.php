@@ -11,6 +11,7 @@
 
         <?php endforeach ?>
     </ul>
+    <a href='/category'>Go to Category</a>
 </section>
 </body>
 </html>
