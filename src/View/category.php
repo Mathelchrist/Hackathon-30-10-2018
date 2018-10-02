@@ -5,9 +5,9 @@
 <section>
     <h1>Items</h1>
     <ul>
-        <?php foreach ($items as $item) : ?>
+        <?php foreach ($categorys as $category) : ?>
 
-            <a href="item/<?= $item['id']?>"><li><?= $item['title'] ?></li></a>
+            <a href="category/<?= $category['id']?>"><li><?= $category['category'] ?></li></a>
 
         <?php endforeach ?>
     </ul>
