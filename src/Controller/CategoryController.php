@@ -5,15 +5,9 @@ use Model\CategoryManager;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 
-class CategoryController
+class CategoryController extends AbstractController
 {
     private $twig;
-
-    public function __construct()
-    {
-        $loader = new Twig_Loader_Filesystem(__DIR__.'/../View');
-        $this->twig = new Twig_Environment($loader);
-    }
 
     public function indexCategory()
     {
