@@ -26,6 +26,7 @@ class JoueurController extends AbstractController
             header('Location:/');
         }
 
+
         return $this->twig->render('Joueur/add.html.twig');
     }
 
@@ -37,11 +38,8 @@ class JoueurController extends AbstractController
 
         if (isset($_POST['id'])){
         $_SESSION['id'] = $_POST['id'];
-
-        var_dump($_POST);
-        var_dump($_SESSION);
+        $_SESSION['nom'] = $_POST['nom'];
         }
-
 
 
 

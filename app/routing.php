@@ -1,12 +1,12 @@
 <?php
 // routing.php
 $routes = [
+    'Map' => [
+        ['index', '/', 'GET'],
+    ],
     'DataBase' => [
         ['fillInDataBase', '/database', 'GET'],
     ],
-    'Map' => [
-        ['map', '/', 'GET'],
-],
     'Option' => [
         ['showOption', '/option', 'GET'],
     ],
@@ -14,7 +14,4 @@ $routes = [
         ['add', '/addPlayer', ['GET', 'POST']],
         ['index', '/players', ['GET', 'POST']],
         ],
-    'Connexion' => [
-        ['add', '/newPlayer', 'POST'],
-    ],
 ];
