@@ -17,7 +17,7 @@
 
         <div class="row d-flex justify-content-around m-lg-5 p-lg-5">
             {% for bonbon in bonbons %}
-                {% if bonbon.quantite==0 %}
+                {% if bonbon.quantite==1 %}
                     <div class="card search d-flex justify-content-center mt-5 p-2" >
                         <img class="card-img-top mx-auto" src="{{ bonbon.image_url}}" alt="Card image cap" style="height: 250px ; width: 250px;">
                         <div class="card-body ">

@@ -2,6 +2,14 @@ body
 {
     background-image:url("../images/img_bg.png") ;
 }
+
+.bonbondex .card
+{
+    background-color:rgba(100,100,100,0.8);
+    color: #FFFFFF;
+}
+
+
 .bonbondex h1
 {
     font-size: calc(40px + (106 - 40) * ((100vw - 300px) / (1600 - 300)));
@@ -11,6 +19,11 @@ body
     font-family: 'Eater', cursive;
 }
 
+.bonbondex h5 {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
 
 
 .bonbondex .search
