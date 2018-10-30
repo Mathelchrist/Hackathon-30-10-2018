@@ -4,6 +4,7 @@ $routes = [
     'Map' => [
         ['index', '/', 'GET'],
     ],
+
     'DataBase' => [
         ['fillInDataBase', '/database', 'GET'],
     ],
@@ -12,4 +13,13 @@ $routes = [
     'Option' => [
         ['showOption', '/option', 'GET'],
     ],
+
+    'Category' => [
+        ['indexCategory', '/category', 'GET'],
+        ['showCategory', '/category/{id}', 'GET'],
+    ],
+    'Bonbondex'=> [
+        ['index', '/bonbondex', ['GET','POST']],
+    ]
+
 ];
