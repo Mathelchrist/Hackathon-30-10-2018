@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 30 Octobre 2018 à 12:00
+-- Généré le :  Mar 30 Octobre 2018 à 12:16
 -- Version du serveur :  5.7.24-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.10-0ubuntu0.18.04.1
 
@@ -48,6 +48,8 @@ INSERT INTO `adresse` (`id`, `longitude`, `latitude`) VALUES
 CREATE TABLE `bonbon` (
   `id` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `code_barre` varchar(255) NOT NULL,
   `categorie_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -55,8 +57,8 @@ CREATE TABLE `bonbon` (
 -- Contenu de la table `bonbon`
 --
 
-INSERT INTO `bonbon` (`id`, `nom`, `categorie_id`) VALUES
-(1, 'snickers', 1);
+INSERT INTO `bonbon` (`id`, `nom`, `image_url`, `code_barre`, `categorie_id`) VALUES
+(1, 'snickers', 'une_url_alakon', '', 1);
 
 -- --------------------------------------------------------
 
