@@ -1,0 +1,33 @@
+.option
+{
+    color: orange;
+    text-align: center;
+    font-size: 5vw;
+    font-family: 'Eater', cursive;
+
+}
+.iconeOption
+{
+    padding-bottom: 23vh;
+    padding-top: 20vh;
+}
+
+.mapOption
+{
+    padding-bottom: 11vh;
+}
+.optionImg
+{
+    height: 12vh;
+    width: auto;
+}
+.optionTitle
+{
+    padding-top: 3vh;
+}
+@media screen and (min-width: 640px) {
+    .iconeOption {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
+}
