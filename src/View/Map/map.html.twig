@@ -110,13 +110,37 @@
         var pi = Math.PI;
         return degrees * (pi/180);
       }
+        
 		</script>
 
 <section>
     <h1 >BONBONDEX</h1>  
-<div id="map"></div>
-<span class="candy align-bottom">
-            <a href="/option"><img src="assets/images/ico_candy.png" alt="candy" height="50vh" width="auto"></a>
-        </span>
-    </section>
+    <button class="adress_button" onclick="showAdressInput()"><img src="/assets/images/bat_search.png" /></button>
+    
+  <form class="adress_form text-center" method="GET" action="">
+      <input class="adress_input" type="text" name="adress_input" value="" />
+  </form>
+
+  <div id="map">
+  </div>
+    <span class="candy align-bottom">
+        <a href="/option"><img src="assets/images/ico_candy.png" alt="candy" height="50vh" width="auto"></a>
+    </span>
+  </section>
+
+    <script>
+    function showAdressInput() {
+
+      }
+
+        let inputElt = $(".adress_input");
+        inputElt.keydown(function(key) {
+          if(key.keyCode == 13) {
+            key.preventDefault();
+            let search = inputElt[0].value;
+          }
+          
+        })
+        </script>
+
 {% endblock %}
