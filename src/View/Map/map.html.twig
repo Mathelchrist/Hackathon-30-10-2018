@@ -23,11 +23,12 @@
       let lonPos = 1.92759;
       let lat = 0;
       let lon = 0;
+      let markers = [];
       let marker = "";
       let popupContent = "";
 
-      let searchDistance = 10; // Distance de recherche 
-      let catchDistance = 0.05; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
+      let searchDistance = 9; // Distance de recherche 
+      let catchDistance = 10; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
 
 			let macarte = null;
 
@@ -41,7 +42,7 @@
           L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
               // Il est toujours bien de laisser le lien vers la source des données
               attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-              minZoom: 12,
+              minZoom: 10,
               maxZoom: 20
           }).addTo(macarte);
 
@@ -54,6 +55,7 @@
           });
           //marker du joueur
           marker = L.marker([latPos, lonPos], {icon : myPositionIcon}).addTo(macarte);
+          markers.push(marker);
 
           {% for data in datas %}
             lat = {{ data.latitude }};
@@ -61,10 +63,12 @@
             //Ajout d'un marker pour chaque adresse de la BDD
             if (distanceBetween(latPos, lonPos, lat, lon) <= searchDistance) {
               marker = L.marker([lat, lon]).addTo(macarte);
+              markers.push(marker);
               //Contenu du popup (si on click sur le marker)
               popupContent = " {{ data.joueur_nom }}</br />" +
               "<img src='{{ data.bonbon_image }}' width:'60px' height='80px' /></br />" + 
               "{{ data.bonbon_nom }} <br />";
+
               //Si markeur proche de la position de l'user, alors je peut cliquer sur le bouton pour le chopper 
               if (distanceBetween(latPos, lonPos, lat, lon) <= catchDistance) {
               popupContent += "<form method='post' action='/'>" +
@@ -76,6 +80,10 @@
             }
             marker.bindPopup( popupContent );
           {% endfor %}
+
+          let group = new L.featureGroup(markers);
+          macarte.fitBounds(group.getBounds().pad(0.5));
+
         }
 			window.onload = function(){
 				// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
