@@ -30,9 +30,11 @@ class MapManager extends AbstractManager
     public function selectDatas($field = '', $order = 'ASC'): array
     {
         $query = 'SELECT
-        bonbondex.id,
+        bonbondex.id AS bonbon_id,
+        bonbondex.adresse_id AS adresse_id,
         adresse.longitude,
         adresse.latitude,
+        bonbon.id,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,
         joueur.nom AS joueur_nom

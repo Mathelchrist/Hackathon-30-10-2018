@@ -46,12 +46,10 @@ abstract class AbstractManager
      *
      * @return array
      */
-    public function selectAll($field = '', $order = 'ASC'): array
+    public function selectAll(): array
     {
         $query = 'SELECT * FROM ' . $this->table;
-        if ($field) {
-            $query .= ' ORDER BY ' . $field . ' ' . $order;
-        }
+
         return $this->pdo->query($query, \PDO::FETCH_CLASS, $this->className)->fetchAll();
     }
 
