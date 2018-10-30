@@ -11,6 +11,9 @@ $routes = [
     'Category' => [
         ['indexCategory', '/category', 'GET'],
         ['showCategory', '/category/{id}', 'GET'],
+    ],
+    'Option' => [
+        ['showOption', '/option', 'GET'],
     ]
 
 ];
