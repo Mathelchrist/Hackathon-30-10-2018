@@ -1,31 +1,36 @@
 <?php
 namespace Controller;
 
-use Model\Item;
-use Model\ItemManager;
+use http\Env\Request;
+use Model\Bonbon;
+use Model\BonbonManager;
 
 class BonbondexController extends AbstractController
 {
     public function index()
     {
-        $itemManager = new ItemManager($this->getPdo());
-        $items = $itemManager->selectAll();
+        $bonbonManager = new BonbonManager($this->getPdo());
+        $bonbons = $bonbonManager->selectAllBonbon();
 
-        return $this->twig->render('/bonbondex.html.twig', ['items' => $items]);
+        for ($i=0;$i<count($bonbons); $i++) {
+            $lng1 = $bonbons[$i]['longitude'];
+            $lat1 = $bonbons[$i]['latitude'];
+            $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+            $rlo1 = deg2rad($lng1);
+            $rla1 = deg2rad($lat1);
+            $rlo2 = deg2rad(1.909251);
+            $rla2 = deg2rad(47.902964);
+            $dlo = ($rlo2 - $rlo1) / 2;
+            $dla = ($rla2 - $rla1) / 2;
+            $a = (sin($dla) * sin($dla)) + cos($rla1) * cos($rla2) * (sin($dlo) * sin($dlo));
+            $d = 2 * atan2(sqrt($a), sqrt(1 - $a));
+            $distance= $earth_radius * $d;
+            $bonbons[$i]['distance']=round($distance/1000,2);
+        }
+
+        return $this->twig->render('/bonbondex.html.twig', ['bonbons' => $bonbons]);
     }
 
-    function getDistance($lat1, $lng1, $lat2, $lng2) {
-        $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
-        $rlo1 = deg2rad($lng1);
-        $rla1 = deg2rad($lat1);
-        $rlo2 = deg2rad($lng2);
-        $rla2 = deg2rad($lat2);
-        $dlo = ($rlo2 - $rlo1) / 2;
-        $dla = ($rla2 - $rla1) / 2;
-        $a = (sin($dla) * sin($dla)) + cos($rla1) * cos($rla2) * (sin($dlo) * sin($dlo));
-        $d = 2 * atan2(sqrt($a), sqrt(1 - $a));
-        return ($earth_radius * $d);
-    }
 
 }
 

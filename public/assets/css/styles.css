@@ -16,6 +16,8 @@ body
 .bonbondex .search
 {
     box-shadow: 2px 8px 10px orangered;
+    width: 320px;
+    word-wrap: break-word;
 }
 
 .bonbondex .found img
@@ -35,4 +37,14 @@ body
     background:transparent;
     left: 0.5em;
     bottom: 3.5em;
+    text-shadow: 2px 4px #000000;
+
 }
+
+.bonbondex .found
+{
+    width: 320px;
+    word-wrap: break-word;
+}
+
+

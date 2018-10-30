@@ -12,12 +12,12 @@ namespace Model;
 /**
  *
  */
-class ItemManager extends AbstractManager
+class BonbonManager extends AbstractManager
 {
     /**
      *
      */
-    const TABLE = 'bonbon';
+    const TABLE = 'quantite';
 
     /**
      *  Initializes this class.
@@ -27,5 +27,11 @@ class ItemManager extends AbstractManager
         parent::__construct(self::TABLE, $pdo);
     }
 
+    public function selectAllBonbon(): array
+    {
+        $query = 'SELECT adresse.adresse, adresse.code_postal,adresse.ville, adresse.longitude, adresse.latitude, bonbon.id, bonbon.nom, bonbon.image_url  FROM '. $this->table.
+                    ' JOIN adresse ON adresse.id=quantite.adresse_id JOIN bonbon ON bonbon.id=quantite.bonbon_id';
 
+        return $this->pdo->query($query, \PDO::FETCH_ASSOC)->fetchAll();
+    }
 }

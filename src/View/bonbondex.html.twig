@@ -16,16 +16,16 @@
         </div>
 
         <div class="row d-flex justify-content-around m-lg-5 p-lg-5">
-            {% for item in items %}
-                {% if item.quantite==1 %}
-                    <div class="card search d-flex justify-content-center  mt-5 p-2" style="width: 18rem;">
-                        <img class="card-img-top" src="https://via.placeholder.com/150C" alt="Card image cap">
+            {% for bonbon in bonbons %}
+                {% if bonbon.quantite==0 %}
+                    <div class="card search d-flex justify-content-center mt-5 p-2" >
+                        <img class="card-img-top mx-auto" src="{{ bonbon.image_url}}" alt="Card image cap" style="height: 250px ; width: 250px;">
                         <div class="card-body ">
-                            <h5 class="card-title text-center">{{ item.title }}</h5>
-                            <p class="card-text text-center">Je me situe à {{ distance }} de toi!</p>
+                            <h5 class="card-title text-center">{{ bonbon.nom }}</h5>
+                            <p class="card-text text-center" >Je me situe à<br/> {{ bonbon.distance}} km de toi!</p>
                             <div class="card-header d-flex justify-content-center">
                                 <form action="" method="post" role="form">
-                                    <input type="hidden" name="{{ item.title }}" value="{{ item.id }}">
+                                    <input type="hidden" name="search" value="{{ bonbon.id }}">
                                     <button type="submit" class="card-link btn btn-dark" name="searchMe"
                                             data-toggle="collapse">Me trouver
                                     </button>
@@ -33,14 +33,15 @@
                             </div>
                         </div>
                     </div>
+
                 {% else %}
                     <div class="card found d-flex justify-content-center  mt-5 p-2" style="width: 18rem;">
-                        <img class="card-img-top" src="https://via.placeholder.com/150C" alt="Card image cap">
+                        <img class="card-img-top mx-auto" src="{{ bonbon.image_url}}" alt="Card image cap" style="height: 250px ; width: 250px;">
                         <div id ="texte">Trouvé</div>
                         <div class="card-body ">
-                            <h5 class="card-title text-center">{{ item.title }}</h5>
-                            <p class="card-text text-center">{{ item.quantite }} bonbons</p>
-                            <p class="card-text text-center">Trouvé au: {{ item.adresse }} </p>
+                            <h5 class="card-title text-center">{{ bonbon.nom }}</h5>
+                            <p class="card-text text-center">{{ bonbon.quantite }} bonbons</p>
+                            <p class="card-text text-center">Trouvé au:<br/> {{ bonbon.adresse }} {{ bonbon.code_postal }} {{ bonbon.ville }}</p>
 
                         </div>
                     </div>
@@ -51,36 +52,5 @@
 
     </main>
 
-    <script>
-        function geolocalisation() {
 
-        if (navigator.geolocation)
-            var watchId = navigator.geolocation.watchPosition(successCallback, errorCallback, {enableHighAccuracy : true});
-        else
-            alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
-
-        function successCallback(position){
-            alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
-        }
-
-        function errorCallback(error){
-            switch(error.code){
-                case error.PERMISSION_DENIED:
-                    alert("L'utilisateur n'a pas autorisé l'accès à sa position");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
-                    break;
-                case error.TIMEOUT:
-                    alert("Le service n'a pas répondu à temps");
-                    break;
-            }
-        }
-
-        function stopWatch(){
-            navigator.geolocation.clearWatch(watchId);
-        }
-
-        }
-    </script>
 {% endblock %}

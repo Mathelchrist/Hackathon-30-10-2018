@@ -13,6 +13,6 @@ $routes = [
         ['showCategory', '/category/{id}', 'GET'],
     ],
     'Bonbondex'=> [
-        ['index', '/bonbondex', 'GET'],
+        ['index', '/bonbondex', ['GET','POST']],
     ]
 ];
