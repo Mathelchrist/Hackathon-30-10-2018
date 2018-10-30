@@ -1,0 +1,77 @@
+body{
+    background: url("../images/background_black.jpg") repeat 0px 0px;
+}
+.bonbondex .card
+{
+    background-color:rgba(100,100,100,0.8);
+    color: #FFFFFF;
+}
+
+
+.bonbondex h1
+{
+    font-size: calc(30px + (106 - 30) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: bold;
+    color: orangered;
+    margin-top: 1em;
+    font-family: 'Nosifer', cursive;
+}
+
+.bonbondex h5 {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 2px 2px #000000;
+}
+
+.bonbondex .search {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.bonbondex .search
+{
+
+    width: 320px;
+    word-wrap: break-word;
+}
+
+.bonbondex .found img
+{
+    position:relative;
+    z-index:1;
+
+}
+
+.bonbondex .found  #texte {
+    position:absolute;
+    z-index:10;
+    color: red;
+    font-weight: bold;
+    font-size: 4em;
+    background:transparent;
+    left: 0.5em;
+    bottom: 3.5em;
+    text-shadow: 2px 4px #000000;
+
+}
+
+.bonbondex .found
+{
+    box-shadow: 2px 8px 10px orangered;
+    width: 320px;
+    word-wrap: break-word;
+}
+.backhome
+{
+
+    color: orange;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Eater', cursive;
+    list-style: none;
+}
+
+.backhome:hover{
+    text-decoration: none;
+    color: orangered;
+}

@@ -1,0 +1,30 @@
+#map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 73vh;
+    margin-left: 0px;
+    width: 100vw;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    position: relative;
+    z-index: 1;
+}
+#map, .candy img{
+
+}
+body{
+    background-color: #000;
+}
+h1,h2, p{
+    font-family: 'Eater', cursive;
+    color: orange;
+    text-align: center;
+}
+.candy img{
+    position: absolute;
+    height: 20vh;
+    z-index: 999;
+    display: block;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%);
+
+}

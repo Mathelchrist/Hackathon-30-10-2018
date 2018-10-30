@@ -3,3 +3,6 @@
 *.cache
 app/db.php
 /vendor/
+/app/db.php
+.idea
+

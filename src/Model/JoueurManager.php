@@ -12,12 +12,12 @@ namespace Model;
 /**
  *
  */
-class ItemManager extends AbstractManager
+class JoueurManager extends AbstractManager
 {
     /**
      *
      */
-    const TABLE = 'item';
+    const TABLE = 'joueur';
 
     /**
      *  Initializes this class.
@@ -29,14 +29,14 @@ class ItemManager extends AbstractManager
 
 
     /**
-     * @param Item $item
+     * @param Joueur $joueur
      * @return int
      */
-    public function insert(Item $item): int
+    public function insert(Joueur $joueur): int
     {
-        // prepared request
-        $statement = $this->pdo->prepare("INSERT INTO $this->table (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item->getTitle(), \PDO::PARAM_STR);
+
+        $statement = $this->pdo->prepare("INSERT INTO $this->table (`nom`) VALUES (:nom)");
+        $statement->bindValue('nom', $joueur->getNom(), \PDO::PARAM_STR);
 
 
         if ($statement->execute()) {
@@ -58,16 +58,16 @@ class ItemManager extends AbstractManager
 
 
     /**
-     * @param Item $item
+     * @param Joueur $joueur
      * @return int
      */
-    public function update(Item $item):int
+    public function update(Joueur $joueur):int
     {
 
         // prepared request
-        $statement = $this->pdo->prepare("UPDATE $this->table SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $item->getId(), \PDO::PARAM_INT);
-        $statement->bindValue('title', $item->getTitle(), \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("UPDATE $this->table SET `nom` = :nom WHERE id=:id");
+        $statement->bindValue('id', $joueur->getId(), \PDO::PARAM_INT);
+        $statement->bindValue('nom', $joueur->getNom(), \PDO::PARAM_STR);
 
 
         return $statement->execute();

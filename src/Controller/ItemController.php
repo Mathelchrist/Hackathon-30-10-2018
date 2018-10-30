@@ -9,8 +9,8 @@
 
 namespace Controller;
 
-use Model\Item;
-use Model\ItemManager;
+use Model\Bonbon;
+use Model\BonbonManager;
 
 /**
  * Class ItemController
@@ -30,10 +30,8 @@ class ItemController extends AbstractController
      */
     public function index()
     {
-        $itemManager = new ItemManager($this->getPdo());
-        $items = $itemManager->selectAll();
 
-        return $this->twig->render('Item/item.html.twig', ['items' => $items]);
+
     }
 
 
@@ -50,7 +48,6 @@ class ItemController extends AbstractController
     {
         $itemManager = new ItemManager($this->getPdo());
         $item = $itemManager->selectOneById($id);
-
         return $this->twig->render('Item/show.html.twig', ['item' => $item]);
     }
 
@@ -91,7 +88,7 @@ class ItemController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $itemManager = new ItemManager($this->getPdo());
-            $item = new Item();
+            $item = new Bonbon();
             $item->setTitle($_POST['title']);
             $id = $itemManager->insert($item);
             header('Location:/item/' . $id);
