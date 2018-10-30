@@ -3,7 +3,7 @@
 $routes = [
     'DataBase' => [
         ['fillInDataBase', '/database', 'GET'],
-    ]
+    ],
     'Map' => [
         ['map', '/', 'GET'],
 ],
