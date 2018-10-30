@@ -33,7 +33,6 @@ class ItemController extends AbstractController
         $itemManager = new ItemManager($this->getPdo());
         $items = $itemManager->selectAll();
 
-        return $this->twig->render('Item/item.html.twig', ['items' => $items]);
     }
 
 
