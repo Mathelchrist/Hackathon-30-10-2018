@@ -19,11 +19,13 @@ class JoueurController extends AbstractController
     {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!empty(trim($_POST['nom']))) {
             $joueurManager = new JoueurManager($this->getPdo());
             $joueur = new Joueur();
-            $joueur->setNom($_POST['nom']);
+            $joueur->setNom(trim($_POST['nom']));
             $joueurManager->insert($joueur);
             header('Location:/');
+            }
         }
 
 

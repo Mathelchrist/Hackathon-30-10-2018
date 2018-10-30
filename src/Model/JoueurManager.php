@@ -34,7 +34,7 @@ class JoueurManager extends AbstractManager
      */
     public function insert(Joueur $joueur): int
     {
-        // prepared request
+
         $statement = $this->pdo->prepare("INSERT INTO $this->table (`nom`) VALUES (:nom)");
         $statement->bindValue('nom', $joueur->getNom(), \PDO::PARAM_STR);
 
