@@ -1,14 +1,15 @@
 <?php
 // routing.php
 $routes = [
+    'Map' => [
+        ['index', '/', 'GET'],
+    ],
     'DataBase' => [
         ['fillInDataBase', '/database', 'GET'],
     ],
-    'Map' => [
-        ['map', '/', 'GET'],
-],
+
+
     'Option' => [
         ['showOption', '/option', 'GET'],
-
     ],
 ];
