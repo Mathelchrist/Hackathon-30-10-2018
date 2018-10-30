@@ -33,15 +33,12 @@ class MapManager extends AbstractManager
         bonbondex.id,
         adresse.longitude,
         adresse.latitude,
-        bonbon_list.bonbon_id,
-        bonbon_list.quantite,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,
         joueur.nom AS joueur_nom
         FROM ' . self::TABLE . '
         JOIN adresse ON bonbondex.adresse_id = adresse.id
-        JOIN bonbon_list ON bonbondex.bonbon_list_id = bonbon_list.id
-        JOIN bonbon ON bonbon_list.id = bonbon.id
+        JOIN bonbon ON bonbon_id = bonbon.id
         JOIN joueur ON bonbondex.joueur_id = joueur.id';
         if ($field) {
             $query .= ' ORDER BY ' . $field . ' ' . $order;
