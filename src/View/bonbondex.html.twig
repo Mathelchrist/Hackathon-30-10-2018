@@ -6,9 +6,15 @@
 
 
     <main class="bonbondex">
+
         <div class="row d-flex justify-content-center">
             <h1 class="col-lg-12 col-sm-8 text-center">Mon Bonbondex</h1>
         </div>
+
+        <div class="d-flex justify-content-center">
+            <button onclick="geolocalisation()" class="btn btn-primary" >Me localiser</button>
+        </div>
+
         <div class="row d-flex justify-content-around m-lg-5 p-lg-5">
             {% for item in items %}
                 {% if item.quantite==1 %}
@@ -16,7 +22,7 @@
                         <img class="card-img-top" src="https://via.placeholder.com/150C" alt="Card image cap">
                         <div class="card-body ">
                             <h5 class="card-title text-center">{{ item.title }}</h5>
-                            <p class="card-text text-center">Quantité</p>
+                            <p class="card-text text-center">Je me situe à {{ distance }} de toi!</p>
                             <div class="card-header d-flex justify-content-center">
                                 <form action="" method="post" role="form">
                                     <input type="hidden" name="{{ item.title }}" value="{{ item.id }}">
@@ -43,8 +49,38 @@
         </div>
 
 
-        <a class="d-flex justify-content-center" href='/'>Back<br></a>
     </main>
 
+    <script>
+        function geolocalisation() {
 
+        if (navigator.geolocation)
+            var watchId = navigator.geolocation.watchPosition(successCallback, errorCallback, {enableHighAccuracy : true});
+        else
+            alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+
+        function successCallback(position){
+            alert("Latitude : " + position.coords.latitude + ", longitude : " + position.coords.longitude);
+        }
+
+        function errorCallback(error){
+            switch(error.code){
+                case error.PERMISSION_DENIED:
+                    alert("L'utilisateur n'a pas autorisé l'accès à sa position");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("L'emplacement de l'utilisateur n'a pas pu être déterminé");
+                    break;
+                case error.TIMEOUT:
+                    alert("Le service n'a pas répondu à temps");
+                    break;
+            }
+        }
+
+        function stopWatch(){
+            navigator.geolocation.clearWatch(watchId);
+        }
+
+        }
+    </script>
 {% endblock %}
