@@ -11,6 +11,8 @@ $routes = [
     'Category' => [
         ['indexCategory', '/category', 'GET'],
         ['showCategory', '/category/{id}', 'GET'],
+    ],
+    'Bonbondex'=> [
+        ['index', '/bonbondex', 'GET'],
     ]
-
 ];

@@ -1,0 +1,19 @@
+body
+{
+    background-image:url("../images/img_bg.png") ;
+}
+.bonbondex h1
+{
+    font-size: 5em;
+    font-weight: bold;
+    color: orangered;
+    margin: 1em;
+    font-family: 'Eater', cursive;
+}
+
+
+
+.bonbondex .card
+{
+    box-shadow: 2px 8px 10px orangered;
+}
