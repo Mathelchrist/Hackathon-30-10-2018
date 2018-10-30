@@ -12,7 +12,6 @@
         "ext-pdo" : "*"
     },
 
-
     "autoload": {
         "psr-4": {
             "": "src/",
