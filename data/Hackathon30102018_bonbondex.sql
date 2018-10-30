@@ -16,27 +16,35 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categorie`
+-- Table structure for table `bonbondex`
 --
 
-DROP TABLE IF EXISTS `categorie`;
+DROP TABLE IF EXISTS `bonbondex`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categorie` (
+CREATE TABLE `bonbondex` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `joueur_id` int(11) NOT NULL,
+  `bonbon_id` int(11) NOT NULL,
+  `quantite` int(11) DEFAULT '1',
+  `longitude` float NOT NULL,
+  `latitude` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Fk_bonbon` (`bonbon_id`),
+  KEY `FK_joueur` (`joueur_id`),
+  CONSTRAINT `FK_joueur` FOREIGN KEY (`joueur_id`) REFERENCES `joueur` (`id`),
+  CONSTRAINT `Fk_bonbon` FOREIGN KEY (`bonbon_id`) REFERENCES `bonbon` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categorie`
+-- Dumping data for table `bonbondex`
 --
 
-LOCK TABLES `categorie` WRITE;
-/*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
-INSERT INTO `categorie` VALUES (1,'Defaut');
-/*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
+LOCK TABLES `bonbondex` WRITE;
+/*!40000 ALTER TABLE `bonbondex` DISABLE KEYS */;
+INSERT INTO `bonbondex` VALUES (1,1,79,1,1.92405,47.9202),(2,1,80,1,1.85125,47.8856),(3,2,84,1,1.90122,47.8957);
+/*!40000 ALTER TABLE `bonbondex` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

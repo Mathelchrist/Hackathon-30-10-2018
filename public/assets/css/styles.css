@@ -1,8 +1,6 @@
-body
-{
-    background-image:url("../images/img_bg.png") ;
+body{
+    background: url("../images/background_black.jpg") repeat 0px 0px;
 }
-
 .bonbondex .card
 {
     background-color:rgba(100,100,100,0.8);
@@ -12,7 +10,7 @@ body
 
 .bonbondex h1
 {
-    font-size: calc(40px + (106 - 40) * ((100vw - 300px) / (1600 - 300)));
+    font-size: calc(30px + (106 - 30) * ((100vw - 300px) / (1600 - 300)));
     font-weight: bold;
     color: orangered;
     margin-top: 1em;
@@ -63,5 +61,17 @@ body
     width: 320px;
     word-wrap: break-word;
 }
+.backhome
+{
 
+    color: orange;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Eater', cursive;
+    list-style: none;
+}
 
+.backhome:hover{
+    text-decoration: none;
+    color: orangered;
+}

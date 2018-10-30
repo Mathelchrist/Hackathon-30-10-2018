@@ -9,15 +9,14 @@ $routes = [
         ['fillInDataBase', '/database', 'GET'],
     ],
 
-
     'Option' => [
         ['showOption', '/option', 'GET'],
     ],
+    'Joueur' => [
+        ['add', '/addPlayer', ['GET', 'POST']],
+        ['index', '/players', ['GET', 'POST']],
+     ],
 
-    'Category' => [
-        ['indexCategory', '/category', 'GET'],
-        ['showCategory', '/category/{id}', 'GET'],
-    ],
     'Bonbondex'=> [
         ['index', '/bonbondex', ['GET','POST']],
     ]

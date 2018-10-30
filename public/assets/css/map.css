@@ -13,11 +13,10 @@
 body{
     background-color: #000;
 }
-h1{
+h1,h2, p{
     font-family: 'Eater', cursive;
     color: orange;
     text-align: center;
-    font-weight: 900;
 }
 .candy img{
     position: absolute;

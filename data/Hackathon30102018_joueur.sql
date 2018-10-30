@@ -16,27 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `categorie`
+-- Table structure for table `joueur`
 --
 
-DROP TABLE IF EXISTS `categorie`;
+DROP TABLE IF EXISTS `joueur`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categorie` (
+CREATE TABLE `joueur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
+  `prenom` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categorie`
+-- Dumping data for table `joueur`
 --
 
-LOCK TABLES `categorie` WRITE;
-/*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
-INSERT INTO `categorie` VALUES (1,'Defaut');
-/*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
+LOCK TABLES `joueur` WRITE;
+/*!40000 ALTER TABLE `joueur` DISABLE KEYS */;
+INSERT INTO `joueur` VALUES (1,'Titi','Titi'),(2,'Tata','Tata');
+/*!40000 ALTER TABLE `joueur` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
