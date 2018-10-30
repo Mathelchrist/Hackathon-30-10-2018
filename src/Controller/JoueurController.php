@@ -39,7 +39,9 @@ class JoueurController extends AbstractController
         if (isset($_POST['id'])){
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['nom'] = $_POST['nom'];
+        header('location:/');
         }
+
 
 
 

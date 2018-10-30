@@ -37,8 +37,6 @@
     font-size: 5vw;
     font-family: 'Eater', cursive;
     margin-right: 15%;
-    margin-right: 5%;
-
 
 }
 .titleMonster
@@ -46,7 +44,9 @@
     margin-top: 10vh;
     margin-bottom: 5vh;
     font-size: 6vw;
-    text-decoration: wavy underline;
+    color: orange;
+    font-family: 'Eater', cursive;
+    text-align: center;
 }
 .addmonster
 {
@@ -63,4 +63,19 @@
     font-family: 'Eater', cursive;
     position : absolute;
     margin-bottom: 15vh;
+    list-style: none;
+
+
+}
+.addplayer:hover{
+    text-decoration: none;
+    color: orangered;
+}
+.centration{
+
+    color: orange;
+    text-align: center;
+    font-size: 5vw;
+    font-family: 'Eater', cursive;
+    margin-left: 1%;
 }

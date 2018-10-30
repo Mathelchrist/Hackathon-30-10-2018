@@ -5,9 +5,9 @@
 
 {% endblock %}
 {% block content %}
-    <section class="centrage">
+    <section class="centration">
     <h1 class="addmonster">Arrivée d'un nouveau monstre</h1>
-    <form method="post">
+    <form method="post" class="mb-5">
         <input type="hidden" value="{{ joueur.id }}" name="id">
         <input type="text" value="{{ joueur.nom }}" name="nom">
         <input type="submit" value="Valider">

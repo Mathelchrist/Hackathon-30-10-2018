@@ -6,14 +6,14 @@
 {% endblock %}
 {% block content %}
 
-    <section class="centrage" >
+    <section>
 <h1 class="titleMonster">Les monstres</h1>
     <ul>
         {% for nom in noms %}
 
 
 
-            <form action="" method="post">
+            <form action="" method="post" class="centrage ">
                 <input type="hidden" value="{{ nom.id }}" name="id">
                 <input type="submit" value="{{ nom.nom }}" name="nom">
             </form>
