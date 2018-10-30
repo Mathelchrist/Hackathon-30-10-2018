@@ -21,7 +21,7 @@ h1{
 }
 .candy img{
     position: absolute;
-    height: 25vh;
+    height: 18vh;
     z-index: 999;
     display: block;
     left: 50%;
