@@ -33,6 +33,7 @@ class MapManager extends AbstractManager
         bonbondex.id,
         adresse.longitude,
         adresse.latitude,
+        bonbon.id,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,
         joueur.nom AS joueur_nom

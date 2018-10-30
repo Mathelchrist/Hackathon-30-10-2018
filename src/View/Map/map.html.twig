@@ -19,8 +19,8 @@
 
 			// On initialise la latitude et la longitude de Paris (centre de la carte)
 			
-      let latPos = 47.919014;
-      let lonPos = 1.898694;
+      let latPos = 47.8322;
+      let lonPos = 1.92759;
       let lat = 0;
       let lon = 0;
       let marker = "";
@@ -33,19 +33,26 @@
             L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
                 // Il est toujours bien de laisser le lien vers la source des données
                 attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                minZoom: 14,
+                minZoom: 12,
                 maxZoom: 20
             }).addTo(macarte);
+            var myPositionIcon = L.icon({
+              iconUrl: '/assets/images/pos.png',
+              iconSize: [50, 50],
+              iconAnchor: [25, 50],
+              popupAnchor: [-3, -76],
+            });
+             marker = L.marker([latPos, lonPos], {icon : myPositionIcon}).addTo(macarte);
               {% for data in datas %}
                 lat = {{ data.latitude }};
                 lon = {{ data.longitude }};
                 marker = L.marker([lat, lon]).addTo(macarte);
                 marker.bindPopup( 
-                " {{ data.joueur_nom }}" +
-                "<img src='{{ data.bonbon_image }}' width:'80px' height='80px' /></br />" + 
+                " {{ data.joueur_nom }}</br />" +
+                "<img src='{{ data.bonbon_image }}' width:'60px' height='80px' /></br />" + 
                 "{{ data.bonbon_nom }} <br />" + 
                 "<form method='post' action='/'>" +
-                  "<button name=''>Je l ai !</button>" + 
+                  "<button name='/bonbon/add/{{bonbon.id}}'>Je l ai !</button>" + 
                 "</form>"
                 );
               {% endfor %}
