@@ -1,10 +1,16 @@
 <?php
 /**
  * Created by PhpStorm.
+<<<<<<< Updated upstream
  * User: wcs
  * Date: 23/10/17
  * Time: 10:57
  * PHP version 7
+=======
+ * User: wilder6
+ * Date: 30/10/18
+ * Time: 16:05
+>>>>>>> Stashed changes
  */
 
 namespace Model;
@@ -17,45 +23,38 @@ class Joueur
 {
     private $id;
 
-    private $nom;
-
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
      * @param mixed $id
-     *
-     * @return Joueur
      */
-    public function setId($id): Joueur
+    public function setId($id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getNom(): string
+    public function getNom()
     {
         return $this->nom;
     }
 
     /**
      * @param mixed $nom
-     *
-     * @return Joueur
      */
-    public function setNom($nom):Joueur
+    public function setNom($nom): void
     {
         $this->nom = $nom;
-
-        return $this;
     }
+
+    private $nom;
+
 }

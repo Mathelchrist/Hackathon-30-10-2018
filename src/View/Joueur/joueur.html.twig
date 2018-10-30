@@ -10,7 +10,14 @@
 <h1 class="titleMonster">Les monstres</h1>
     <ul>
         {% for nom in noms %}
-        <p class="centrage">{{ nom.nom }}</p>
+
+
+
+            <form action="" method="post">
+                <input type="hidden" value="{{ nom.id }}" name="id">
+                <input type="submit" value="{{ nom.nom }}" name="nom">
+            </form>
+
         {% endfor %}
     </ul>
         <div class="fixed-bottom">

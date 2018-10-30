@@ -12,6 +12,9 @@ $routes = [
     ],
     'Joueur' => [
         ['add', '/addPlayer', ['GET', 'POST']],
-        ['index', '/players', 'GET'],
+        ['index', '/players', ['GET', 'POST']],
+        ],
+    'Connexion' => [
+        ['add', '/newPlayer', 'POST'],
     ],
 ];

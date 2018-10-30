@@ -17,7 +17,7 @@ class JoueurController extends AbstractController
 
     public function add()
     {
-
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $joueurManager = new JoueurManager($this->getPdo());
             $joueur = new Joueur();
@@ -31,8 +31,19 @@ class JoueurController extends AbstractController
 
     public function index()
     {
+        session_start();
         $joueurManager = new JoueurManager($this->getPdo());
         $noms = $joueurManager->selectAll();
+
+        if (isset($_POST['id'])){
+        $_SESSION['id'] = $_POST['id'];
+
+        var_dump($_POST);
+        var_dump($_SESSION);
+        }
+
+
+
 
         return $this->twig->render('Joueur/joueur.html.twig', ['noms' => $noms]);
     }
