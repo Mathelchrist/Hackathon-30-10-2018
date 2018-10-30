@@ -1,7 +1,7 @@
 <?php
 
-
 namespace Controller;
+
 use Model\MapManager;
 use Model\Bonbondex;
 use Twig_Loader_Filesystem;
@@ -15,10 +15,8 @@ use GuzzleHttp\Client;
  * Time: 11:29
  */
 
-namespace Controller;
-
 class MapController extends AbstractController
-
+ {
     public function index()
     {
         
