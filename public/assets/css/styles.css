@@ -16,7 +16,7 @@ body
     font-weight: bold;
     color: orangered;
     margin-top: 1em;
-    font-family: 'Eater', cursive;
+    font-family: 'Nosifer', cursive;
 }
 
 .bonbondex h5 {
@@ -25,17 +25,20 @@ body
     text-shadow: 2px 2px #000000;
 }
 
+.bonbondex .search {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
 
 .bonbondex .search
 {
-    box-shadow: 2px 8px 10px orangered;
+
     width: 320px;
     word-wrap: break-word;
 }
 
 .bonbondex .found img
 {
-    -webkit-filter: blur(5px);
     position:relative;
     z-index:1;
 
@@ -56,6 +59,7 @@ body
 
 .bonbondex .found
 {
+    box-shadow: 2px 8px 10px orangered;
     width: 320px;
     word-wrap: break-word;
 }

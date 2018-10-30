@@ -17,7 +17,7 @@
 
         <div class="row d-flex justify-content-around m-lg-5 p-lg-5">
             {% for bonbon in bonbons %}
-                {% if bonbon.quantite==1 %}
+                {% if bonbon.quantite == 1 %}
                     <div class="card search d-flex justify-content-center mt-5 p-2" >
                         <img class="card-img-top mx-auto" src="{{ bonbon.image_url}}" alt="Card image cap" style="height: 250px ; width: 250px;">
                         <div class="card-body ">
@@ -37,7 +37,6 @@
                 {% else %}
                     <div class="card found d-flex justify-content-center  mt-5 p-2" style="width: 18rem;">
                         <img class="card-img-top mx-auto" src="{{ bonbon.image_url}}" alt="Card image cap" style="height: 250px ; width: 250px;">
-                        <div id ="texte">Trouvé</div>
                         <div class="card-body ">
                             <h5 class="card-title text-center">{{ bonbon.nom }}</h5>
                             <p class="card-text text-center">{{ bonbon.quantite }} bonbons</p>
