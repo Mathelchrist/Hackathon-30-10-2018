@@ -1,7 +1,17 @@
 {% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/option.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+{% endblock %}
 {% block content %}
-    <h1>Monstre {{ noms.nom }}</h1>
-    <a href="/players/delete/{{noms.id}}">Supprimer</a>
-    <a href='/players'>Back</a>
+    <h1 class="titleMonster pt-5">{{ noms.nom }}</h1>
+    <section class="col">
+    <div>
+    <a class="titleMonster dead mb-3" href="/players/delete/{{noms.id}}">DEAD<img class="imgkill" src="/assets/images/death.png"></a>
+    </div>
+    <div><p class="titleMonster">OR</p></div>
+    <div>
+        <a class="titleMonster alive" href='/players'>ALIVE<img class="imgkill" src="/assets/images/jesus.png"></a>
+    </div>
+    </section>
 {% endblock %}

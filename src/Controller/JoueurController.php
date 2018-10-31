@@ -9,6 +9,7 @@
 namespace Controller;
 
 
+use Model\BonbondexManager;
 use Model\JoueurManager;
 use Model\Joueur;
 
@@ -24,7 +25,7 @@ class JoueurController extends AbstractController
             $joueur = new Joueur();
             $joueur->setNom(trim($_POST['nom']));
             $joueurManager->insert($joueur);
-            header('Location:/');
+            header('Location:/players');
             }
         }
 
@@ -57,6 +58,8 @@ class JoueurController extends AbstractController
     }
     public function delete(int $id)
     {
+        $totoManager = new BonbondexManager($this->getPdo());
+        $totoManager->delete($id);
         $joueurManager = new JoueurManager($this->getPdo());
         $joueurManager->delete($id);
         header('Location:/players');

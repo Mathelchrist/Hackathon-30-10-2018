@@ -7,6 +7,14 @@
 {% block content %}
 
     <section>
+
+        <div class="">
+            <div class="row">
+                <a class="addplayer col" href='/'>Retour à la carte</a>
+                <a class="addplayer col"></a>
+                <a class="addplayer col" href='/addPlayer'>Ajouter un monstre</a>
+            </div>
+        </div>
 <h1 class="titleMonster">Les monstres</h1>
     <ul>
         {% for nom in noms %}
@@ -25,12 +33,6 @@
 
         {% endfor %}
     </ul>
-        <div class="fixed-bottom">
-<div class="row">
-    <a class="addplayer col" href='/'>Retour à la carte<br></a>
-    <a class="addplayer offset-2 col" href='/addPlayer'>Ajouter un monstre</a>
-</div>
-        </div>
     </section>
 
 {% endblock %}
