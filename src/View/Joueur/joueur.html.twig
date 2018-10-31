@@ -7,11 +7,16 @@
 {% block content %}
 
     <section>
+        <audio id="audioPlayer" src="http://s1download-universal-soundbank.com/mp3/sounds/826.mp3"></audio>
+
+        <script>
+            var player = document.querySelector('#audioPlayer');
+            player.play();
+        </script>
+
 <h1 class="titleMonster">Les monstres</h1>
     <ul>
         {% for nom in noms %}
-
-
 
             <form method="post" class="centrage ">
                 <input type="hidden" value="{{ nom.id }}" name="id">
