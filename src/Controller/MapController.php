@@ -20,24 +20,30 @@ class MapController extends AbstractController
  {
     public function index()
     {
-        if(!($_SESSION['id'])) {
+        if(!isset($_SESSION['id'])) {
             header('location: /players');
             exit();
         }
         $MapManager = new MapManager($this->getPdo());
         $datas = $MapManager->selectDatas();
 
-        if($_GET) {
-            $city = $_GET["adress_input"];
+        if (!isset($_SESSION['city'])) {
+            $_SESSION['city'] = "Orléans";
+            $coord = $this->setUserPosition($_SESSION['city']);
+            $dataBaseController = new DataBaseController();
+            $dataBaseController->affectAdresse($coord);
+            header('Location: /');
+        } elseif (isset($_GET['adress_input']) && !empty($_GET['adress_input']) &&
+                 (isset($_SESSION['city']) && $_GET['adress_input'] != $_SESSION['city'])) {
+            $_SESSION['city'] = $_GET["adress_input"];
+            $coord = $this->setUserPosition($_SESSION['city']);
+            $dataBaseController = new DataBaseController();
+            $dataBaseController->affectAdresse($coord);
+            header('Location: /');
         } else {
-            $city = "Orléans";
+            $coord = $this->setUserPosition($_SESSION['city']);
         }
-        
-        $coord = $this->setUserPosition($city);
 
-        $dataBaseController = new DataBaseController();
-        $dataBaseController->affectAdresse($coord);
-        
         if(!isset($_POST['search'])) {
             $_POST['search'] = "null";
         }
