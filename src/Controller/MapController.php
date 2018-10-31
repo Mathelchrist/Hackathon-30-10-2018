@@ -6,7 +6,8 @@ use Model\MapManager;
 use Model\Bonbondex;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
-use GuzzleHttp\Client;
+use Controller\DataBaseController;
+
 
 /**
  * Created by PhpStorm.
@@ -32,19 +33,13 @@ class MapController extends AbstractController
         } else {
             $city = "Orléans";
         }
-        $uri = 'https://api-adresse.data.gouv.fr/search/?q='. $city .'&autocomplete=0';
-    
-        $client = new Client();
+        
+        $coord = $this->setUserPosition($city);
 
-        $response = $client->request('GET', $uri);
+        $dataBaseController = new DataBaseController();
+        $dataBaseController->affectAdresse($coord);
 
-        $body = $response->getBody();
-        $json = json_decode($body->getContents(), true);
-        $coords = $json["features"][0]["geometry"]["coordinates"];
-        $lonPos = $coords[0];
-        $latPos = $coords[1];
-
-        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'lonPos' => $lonPos, 'latPos' => $latPos, 'session' => $_SESSION['nom'] ]);
+        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'coord' => $coord, 'session' => $_SESSION['nom'] ]);
 
     }
 
