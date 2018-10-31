@@ -37,8 +37,13 @@ class MapController extends AbstractController
 
         $dataBaseController = new DataBaseController();
         $dataBaseController->affectAdresse($coord);
+        
+        if(!isset($_POST['search'])) {
+            $_POST['search'] = "null";
+        }
 
-        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'coord' => $coord, 'session' => $_SESSION['nom'] ]);
+
+        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'coord' => $coord, 'session' => $_SESSION['nom'], 'post' => $_POST['search'] ]);
 
     }
 

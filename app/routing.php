@@ -24,6 +24,7 @@ $routes = [
 
     'Bonbondex'=> [
         ['index', '/bonbondex', ['GET','POST']],
+        ['add', '/bonbondex/add', ['GET','POST']],
 
     ]
 
