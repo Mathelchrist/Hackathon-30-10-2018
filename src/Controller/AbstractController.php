@@ -48,7 +48,7 @@ abstract class AbstractController
     }
 
     public function setUserPosition($input) {
-        $uri = 'https://api-adresse.data.gouv.fr/search/?q='. $input .'&autocomplete=0';
+        $uri = 'https://api-adresse.data.gouv.fr/search/?q='. urlencode($input) .'&autocomplete=0';
     
         $client = new Client();
 
