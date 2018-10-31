@@ -2,7 +2,7 @@
 // routing.php
 $routes = [
     'Map' => [
-        ['index', '/', 'GET'],
+        ['index', '/', ['GET', 'POST']],
     ],
 
     'DataBase' => [
@@ -16,10 +16,16 @@ $routes = [
     'Joueur' => [
         ['add', '/addPlayer', ['GET', 'POST']],
         ['index', '/players', ['GET', 'POST']],
-     ],
+        ['delete', '/players/delete/{id:\d+}', 'GET'],
+
+        ['show', '/players/{id:\d+}', 'GET'], // action, url, method
+
+    ],
 
     'Bonbondex'=> [
         ['index', '/bonbondex', ['GET','POST']],
+        ['add', '/bonbondex/add', ['GET','POST']],
+
     ]
 
 ];

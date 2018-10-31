@@ -45,9 +45,6 @@ class JoueurManager extends AbstractManager
     }
 
 
-    /**
-     * @param int $id
-     */
     public function delete(int $id): void
     {
         // prepared request
@@ -56,20 +53,4 @@ class JoueurManager extends AbstractManager
         $statement->execute();
     }
 
-
-    /**
-     * @param Joueur $joueur
-     * @return int
-     */
-    public function update(Joueur $joueur):int
-    {
-
-        // prepared request
-        $statement = $this->pdo->prepare("UPDATE $this->table SET `nom` = :nom WHERE id=:id");
-        $statement->bindValue('id', $joueur->getId(), \PDO::PARAM_INT);
-        $statement->bindValue('nom', $joueur->getNom(), \PDO::PARAM_STR);
-
-
-        return $statement->execute();
-    }
 }

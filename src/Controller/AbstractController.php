@@ -5,6 +5,7 @@ namespace Controller;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use App\Connection;
+use GuzzleHttp\Client;
 
 abstract class AbstractController
 {
@@ -17,6 +18,7 @@ abstract class AbstractController
      * @var \PDO
      */
     protected $pdo;
+    private $coord;
 
     /**
      *  Initializes this class.
@@ -43,5 +45,26 @@ abstract class AbstractController
     public function getPdo(): \PDO
     {
         return $this->pdo;
+    }
+
+    public function setUserPosition($input) {
+        $uri = 'https://api-adresse.data.gouv.fr/search/?q='. $input .'&autocomplete=0';
+    
+        $client = new Client();
+
+        $response = $client->request('GET', $uri);
+
+        $body = $response->getBody();
+        $json = json_decode($body->getContents(), true);
+        $coords = $json["features"][0]["geometry"]["coordinates"];
+        $lonPos = $coords[0];
+        $latPos = $coords[1];
+        $this->coord = [$latPos, $lonPos];
+
+        return $this->coord;
+    }
+
+    public function getUserPosition() {
+        return $this->coord;
     }
 }

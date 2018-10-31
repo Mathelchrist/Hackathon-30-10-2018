@@ -50,10 +50,12 @@ class DataBaseController extends AbstractController
      * @param $latitude
      * @param $longitude
      */
-    public function affectAdresse()
+    public function affectAdresse($coord = [47.902964, 1.909251])
     {
-        $longitudeClient = 1.909251;
-        $latitudeClient = 47.902964;
+       /*  $longitudeClient = 1.909251;
+        $latitudeClient = 47.902964; */
+        $longitudeClient = $coord[1];
+        $latitudeClient = $coord[0];
         $rayonEnKm = 3;
 
         $candyManager = new CandyManager($this->getPdo());
@@ -70,7 +72,7 @@ class DataBaseController extends AbstractController
             $candyManager->affectAddress($id, $latitude, $longitude);
         }
 
-        header('Location: /bonbondex');
+        //header('Location: /bonbondex');
     }
 
     /**

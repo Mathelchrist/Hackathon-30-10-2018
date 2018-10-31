@@ -7,6 +7,7 @@
 {% block content %}
 
     <section>
+
         <audio id="audioPlayer" src="http://s1download-universal-soundbank.com/mp3/sounds/826.mp3"></audio>
 
         <script>
@@ -14,23 +15,36 @@
             player.play();
         </script>
 
+        <div class="">
+            <div class="row">
+                <a class="addplayer col" href='/'>Retour à la carte</a>
+                <a class="addplayer col"></a>
+                <a class="addplayer col" href='/addPlayer'>Ajouter un monstre</a>
+            </div>
+        </div>
+
 <h1 class="titleMonster">Les monstres</h1>
+        {% if session is empty %}
+        <p class="centration">Veuillez choisir un monstre</p>
+        {% endif %}
+
     <ul>
         {% for nom in noms %}
 
-            <form method="post" class="centrage ">
+
+            <div class="row">
+
+            <form method="post" class="centrage monster col">
                 <input type="hidden" value="{{ nom.id }}" name="id">
                 <input type="submit" value="{{ nom.nom }}" name="nom">
             </form>
 
+            <a href="/players/{{ nom.id }}"> <img class="hell col" src="assets/images/graves.png"> </a>
+
+            </div>
+
         {% endfor %}
     </ul>
-        <div class="fixed-bottom">
-<div class="row">
-    <a class="addplayer col" href='/'>Retour à la carte<br></a>
-    <a class="addplayer offset-2 col" href='/addPlayer'>Ajouter un monstre</a>
-</div>
-        </div>
     </section>
 
 {% endblock %}
