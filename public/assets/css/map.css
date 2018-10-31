@@ -42,3 +42,7 @@ h1{
     background-color: transparent;
     border: 0;
 }
+
+.adress_input {
+    display: none;
+}

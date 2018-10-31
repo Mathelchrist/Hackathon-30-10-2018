@@ -19,8 +19,9 @@
 
 			// On initialise la latitude et la longitude de Paris (centre de la carte)
 			
-      let latPos = 47.8322;
-      let lonPos = 1.92759;
+      let latPos = {{ latPos }};
+      let lonPos = {{ lonPos }};
+
       let lat = 0;
       let lon = 0;
       let markers = [];
@@ -73,7 +74,8 @@
               if (distanceBetween(latPos, lonPos, lat, lon) <= catchDistance) {
               popupContent += "<form method='post' action='/'>" +
                   "<input type='hidden' value='{{data.bonbon_id}}' name='bonbon_id' />" +
-                  "<input type='hidden' value='{{data.adresse_id}}' name='adresse_id' />" +
+                  "<input type='hidden' value='{{data.longitude}}' name='longitude' />" +
+                  "<input type='hidden' value='{{data.latitude}}' name='latitude' />" +
                   "<button name=''>Je l ai !</button>" + 
                   "</form>"
               }
@@ -129,18 +131,24 @@
   </section>
 
     <script>
-    function showAdressInput() {
-
-      }
-
         let inputElt = $(".adress_input");
+
+    // Afficher / cahcer le formulaire par appui sur le bouton
+    function showAdressInput() {
+      if(inputElt.css("display") == "inline") {
+        inputElt.css("display", "none");
+      } else if(inputElt.css("display") == "none") {
+        inputElt.css("display","inline");
+      }
+    }
+
         inputElt.keydown(function(key) {
           if(key.keyCode == 13) {
-            key.preventDefault();
+            //key.preventDefault();
             let search = inputElt[0].value;
           }
           
-        })
+        });
         </script>
 
 {% endblock %}

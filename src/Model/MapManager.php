@@ -31,15 +31,13 @@ class MapManager extends AbstractManager
     {
         $query = 'SELECT
         bonbondex.id AS bonbon_id,
-        bonbondex.adresse_id AS adresse_id,
-        adresse.longitude,
-        adresse.latitude,
+        bonbondex.longitude AS longitude,
+        bonbondex.latitude AS latitude,
         bonbon.id,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,
         joueur.nom AS joueur_nom
         FROM ' . self::TABLE . '
-        JOIN adresse ON bonbondex.adresse_id = adresse.id
         JOIN bonbon ON bonbon_id = bonbon.id
         JOIN joueur ON bonbondex.joueur_id = joueur.id';
         if ($field) {
