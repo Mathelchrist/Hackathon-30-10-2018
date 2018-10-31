@@ -38,15 +38,30 @@ class JoueurController extends AbstractController
         $joueurManager = new JoueurManager($this->getPdo());
         $noms = $joueurManager->selectAll();
 
+
         if (isset($_POST['id'])){
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['nom'] = $_POST['nom'];
         header('location:/');
         }
 
-
-
-
         return $this->twig->render('Joueur/joueur.html.twig', ['noms' => $noms]);
     }
+
+    public function show(int $id)
+    {
+        $joueurManager = new JoueurManager($this->getPdo());
+        $joueur = $joueurManager->selectOneById($id);
+
+        return $this->twig->render('Joueur/hell.html.twig', ['noms' => $joueur]);
+    }
+    public function delete(int $id)
+    {
+        $joueurManager = new JoueurManager($this->getPdo());
+        $joueurManager->delete($id);
+        header('Location:/players');
+    }
+
+
+
 }

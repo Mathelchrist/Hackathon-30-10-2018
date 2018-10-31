@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Monstre {{ noms.nom }}</h1>
+    <a href="/players/delete/{{noms.id}}">Supprimer</a>
+    <a href='/players'>Back</a>
+{% endblock %}

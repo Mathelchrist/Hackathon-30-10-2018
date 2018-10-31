@@ -12,11 +12,16 @@
         {% for nom in noms %}
 
 
+            <div class="row">
 
-            <form method="post" class="centrage ">
+            <form method="post" class="centrage monster col">
                 <input type="hidden" value="{{ nom.id }}" name="id">
                 <input type="submit" value="{{ nom.nom }}" name="nom">
             </form>
+
+            <a href="/players/{{ nom.id }}"> <img class="hell col" src="assets/images/graves.png"> </a>
+
+            </div>
 
         {% endfor %}
     </ul>

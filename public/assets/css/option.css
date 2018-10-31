@@ -30,8 +30,8 @@
         padding-left: 10%;
     }
 }
-.centrage{
-
+.centrage
+{
     color: orange;
     text-align: center;
     font-size: 5vw;
@@ -78,4 +78,17 @@
     font-size: 5vw;
     font-family: 'Eater', cursive;
     margin-left: 1%;
+}
+.monster
+{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+
+}
+.hell
+{
+    height: 8vh;
+    display: flex;
+    justify-content: left;
 }
