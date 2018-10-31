@@ -30,7 +30,7 @@ class ItemController extends AbstractController
      */
     public function index()
     {
-
+        return $this->twig->render('testGIF.html.twig');
 
     }
 

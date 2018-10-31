@@ -19,7 +19,11 @@ class MapController extends AbstractController
  {
     public function index()
     {
-        
+        session_start();
+        if(!($_SESSION['id'])) {
+            header('location: /players');
+            exit();
+        }
         $MapManager = new MapManager($this->getPdo());
         $datas = $MapManager->selectDatas();
 
@@ -40,7 +44,7 @@ class MapController extends AbstractController
         $lonPos = $coords[0];
         $latPos = $coords[1];
 
-        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'lonPos' => $lonPos, 'latPos' => $latPos]);
+        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'lonPos' => $lonPos, 'latPos' => $latPos, 'session' => $_SESSION['nom'] ]);
 
     }
 

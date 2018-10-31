@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/option.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+{% endblock %}
+{% block content %}
+    <section class="centration">
+    <h1 class="addmonster">Arrivée d'un nouveau monstre</h1>
+    <form method="post" class="mb-5">
+        <input type="hidden" value="{{ joueur.id }}" name="id">
+        <input type="text" value="{{ joueur.nom }}" name="nom">
+        <input type="submit" value="Valider">
+    </form>
+        <a class="addplayer col" href='/'>Retour à la carte<br></a>
+    </section>
+{% endblock %}

@@ -29,7 +29,7 @@
       let popupContent = "";
 
       let searchDistance = 9; // Distance de recherche 
-      let catchDistance = 10; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
+      let catchDistance = 7; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
 
 			let macarte = null;
 
@@ -117,7 +117,8 @@
 
 <section>
   <div class="map_header">
-    <h1 >BONBONDEX</h1>  
+    <h1 >BONBONDEX</h1>
+    <p class="mt-3">Bienvenue {{ session }}</p>  
     <button class="adress_button" onclick="showAdressInput()"><img src="/assets/images/bat_search.png" /></button>
     <form class="form-group text-center" method="GET" action="">
         <input class="adress_input" type="text" name="adress_input" value="" />
@@ -151,5 +152,4 @@
           
         });
         </script>
-
 {% endblock %}

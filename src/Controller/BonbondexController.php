@@ -4,6 +4,9 @@ namespace Controller;
 use http\Env\Request;
 use Model\Bonbon;
 use Model\BonbonManager;
+use Model\Bonbondex;
+use Model\BonbondexManager;
+
 
 class BonbondexController extends AbstractController
 {
@@ -12,9 +15,16 @@ class BonbondexController extends AbstractController
         $bonbonManager = new BonbonManager($this->getPdo());
         $bonbons = $bonbonManager->selectAllBonbon();
 
-        for ($i=0;$i<count($bonbons); $i++) {
-            $lng1 = $bonbons[$i]['longitude'];
-            $lat1 = $bonbons[$i]['latitude'];
+        for ($i=0; $i < count($bonbons); $i++) {
+            if (!empty($bonbons[$i]['longitudebonbonpris'])) {
+                $lng1 = $bonbons[$i]['longitudebonbonpris'];
+                $lat1 = $bonbons[$i]['latitudebonbonpris'];
+                $bonbons[$i]['adressepostale'] = $this->getAdresse($lat1, $lng1);
+            } else {
+                $lng1 = $bonbons[$i]['longitude'];
+                $lat1 = $bonbons[$i]['latitude'];
+            }
+
             $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
             $rlo1 = deg2rad($lng1);
             $rla1 = deg2rad($lat1);
@@ -32,5 +42,35 @@ class BonbondexController extends AbstractController
     }
 
 
+    public function add()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $bonbondexManager = new BonbondexManager($this->getPdo());
+            $bonbondex = new Bonbondex();
+            $bonbondex->setId($_POST['bonbon_id']);
+            $id = $bonbondexManager->insert($bonbondex);
+            header('Location:/bonbondex');
+        }
+
+        return $this->twig->render('bonbondex.html.twig');
+    }
+
+    public function getAdresse($latitude, $longitude)
+    {
+        $url = "https://api-adresse.data.gouv.fr/reverse/?lon=".$longitude."&lat=".$latitude;
+        $json = file_get_contents($url);
+        $json = json_decode($json);
+        $adresse = 'cimetière :D';
+
+
+        if (!empty($json)) {
+            if (isset($json->features[0]->properties->label)) {
+                $adresse = $json->features[0]->properties->label;
+            }
+        }
+
+        return $adresse;
+    }
 }
 
