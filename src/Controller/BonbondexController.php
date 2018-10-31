@@ -31,6 +31,19 @@ class BonbondexController extends AbstractController
         return $this->twig->render('/bonbondex.html.twig', ['bonbons' => $bonbons]);
     }
 
+    public function add()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $bonbondexManager = new BonbondexManager($this->getPdo());
+            $bonbondex = new Bonbondex();
+            $bonbondex->setId($_POST['bonbon_id']);
+            $id = $bonbondexManager->insert($bonbondex);
+            header('Location:/bonbondex');
+        }
+
+        return $this->twig->render('bonbondex.html.twig');
+    }
 
 }
 
