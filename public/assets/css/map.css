@@ -30,7 +30,7 @@ h1,h2, p{
 }
 
 .map_header {
-    height: 80px;
+    height: 90px;
 }
 
 .adress_button,
@@ -49,7 +49,6 @@ h1,h2, p{
 .adress_input {
     display: none;
     min-width: 350px;
-    width: 70vw;
+    width: 80vw;
     height: 50px;
-    margin-top: 40px;
 }
