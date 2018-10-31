@@ -29,7 +29,7 @@
       let popupContent = "";
 
       let searchDistance = 9; // Distance de recherche 
-      let catchDistance = 7; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
+      let catchDistance = 0.05; // Distance MAXIMALE à laquelle on peut attrapper le bonbon (dans ce cas le bouton "Je l'ai!" s'affiche)
 
 			let macarte = null;
 
@@ -50,7 +50,13 @@
           //icone position joueur
           var myPositionIcon = L.icon({
             iconUrl: '/assets/images/pos.png',
-            iconSize: [50, 50],
+            iconSize: [70, 70],
+            iconAnchor: [25, 50],
+            popupAnchor: [-3, -76],
+          });
+          var searchIcon = L.icon({
+            iconUrl: '/assets/images/spos.png',
+            iconSize: [70, 70],
             iconAnchor: [25, 50],
             popupAnchor: [-3, -76],
           });
@@ -63,7 +69,11 @@
             lon = {{ data.longitude }};
             //Ajout d'un marker pour chaque adresse de la BDD
             if (distanceBetween(latPos, lonPos, lat, lon) <= searchDistance) {
-              marker = L.marker([lat, lon]).addTo(macarte);
+              if({{ post }} == {{ data.id }} ) {
+                marker = L.marker([lat, lon], {icon : searchIcon}).addTo(macarte);
+              } else {
+                marker = L.marker([lat, lon]).addTo(macarte);
+              }
               markers.push(marker);
               //Contenu du popup (si on click sur le marker)
               popupContent = " {{ data.joueur_nom }}</br />" +
@@ -72,8 +82,8 @@
 
               //Si markeur proche de la position de l'user, alors je peut cliquer sur le bouton pour le chopper 
               if (distanceBetween(latPos, lonPos, lat, lon) <= catchDistance) {
-              popupContent += "<form method='post' action='/'>" +
-                  "<input type='hidden' value='{{data.bonbon_id}}' name='bonbon_id' />" +
+              popupContent += "<form method='post' action='/bonbondex/add'>" +
+                  "<input type='hidden' value='{{data.id}}' name='bonbon_id' />" +
                   "<input type='hidden' value='{{data.longitude}}' name='longitude' />" +
                   "<input type='hidden' value='{{data.latitude}}' name='latitude' />" +
                   "<button name=''>Je l ai !</button>" + 

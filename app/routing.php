@@ -2,7 +2,7 @@
 // routing.php
 $routes = [
     'Map' => [
-        ['index', '/', 'GET'],
+        ['index', '/', ['GET', 'POST']],
     ],
 
     'DataBase' => [
@@ -24,6 +24,7 @@ $routes = [
 
     'Bonbondex'=> [
         ['index', '/bonbondex', ['GET','POST']],
+        ['add', '/bonbondex/add', ['GET','POST']],
 
     ]
 
