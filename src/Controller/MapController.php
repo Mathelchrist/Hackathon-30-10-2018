@@ -27,29 +27,35 @@ class MapController extends AbstractController
         $MapManager = new MapManager($this->getPdo());
         $datas = $MapManager->selectDatas();
 
-        if (!isset($_SESSION['city'])) {
+        if (!isset($_SESSION['city']) && !isset($_SESSION['adresse'])) {
             $_SESSION['city'] = "Orléans";
-            $coord = $this->setUserPosition($_SESSION['city']);
+            $_SESSION['adresse'] = "1 avenue du champs de mars";
+            $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
             $dataBaseController = new DataBaseController();
             $dataBaseController->affectAdresse($coord);
             header('Location: /');
-        } elseif (isset($_GET['adress_input']) && !empty($_GET['adress_input']) &&
-                 (isset($_SESSION['city']) && $_GET['adress_input'] != $_SESSION['city'])) {
-            $_SESSION['city'] = $_GET["adress_input"];
-            $coord = $this->setUserPosition($_SESSION['city']);
-            $dataBaseController = new DataBaseController();
-            $dataBaseController->affectAdresse($coord);
-            header('Location: /');
+        } elseif (!empty($_POST['city_input'])) {
+            if ($_POST['city_input'] != $_SESSION['city']) {
+                $_SESSION['city'] = $_POST['city_input'];
+                $_SESSION['adresse'] = $_POST['adresse_input'] ?? '';
+                $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
+                $dataBaseController = new DataBaseController();
+                $dataBaseController->affectAdresse($coord);
+                header('Location: /');
+             } else {
+                $_SESSION['adresse'] = $_POST['adresse_input'];
+                $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
+            }
         } else {
-            $coord = $this->setUserPosition($_SESSION['city']);
+            $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
         }
 
-        if(!isset($_POST['search'])) {
+         if(!isset($_POST['search'])) {
             $_POST['search'] = "null";
         }
 
 
-        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'coord' => $coord, 'session' => $_SESSION['nom'], 'post' => $_POST['search'] ]);
+        return $this->twig->render('Map/map.html.twig', ['datas' => $datas, 'coord' => $coord, 'session' => $_SESSION, 'post' => $_POST['search'] ]);
 
     }
 

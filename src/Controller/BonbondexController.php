@@ -15,7 +15,7 @@ class BonbondexController extends AbstractController
         $bonbonManager = new BonbonManager($this->getPdo());
         $bonbons = $bonbonManager->selectAllBonbon();
 
-        $coord = $this->setUserPosition($_SESSION['city']);
+        $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
 
         for ($i=0; $i < count($bonbons); $i++) {
             if (!empty($bonbons[$i]['longitudebonbonpris'])) {
