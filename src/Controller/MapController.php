@@ -29,50 +29,28 @@ class MapController extends AbstractController
 
         if (!isset($_SESSION['city']) && !isset($_SESSION['adresse'])) {
             $_SESSION['city'] = "Orléans";
-            $_SESSION['adresse'] = "1 avenue de l'Europe";
+            $_SESSION['adresse'] = "1 avenue du champs de mars";
             $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
             $dataBaseController = new DataBaseController();
             $dataBaseController->affectAdresse($coord);
             header('Location: /');
-        } elseif (!empty($_GET['city_input'])) {
-            if ($_GET['city_input'] != $_SESSION['city']) {
-                $_SESSION['city'] = $_GET['city_input'];
-                $_SESSION['adresse'] = $_GET['adresse_input'] ?? '';
+        } elseif (!empty($_POST['city_input'])) {
+            if ($_POST['city_input'] != $_SESSION['city']) {
+                $_SESSION['city'] = $_POST['city_input'];
+                $_SESSION['adresse'] = $_POST['adresse_input'] ?? '';
                 $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
-                if (!isset($_GET['adresse_input']) || (isset($_GET['adresse_input']) && empty($_GET['adresse_input']))) {
-                    $dataBaseController = new DataBaseController();
-                    $dataBaseController->affectAdresse($coord);
-                    header('Location: /');
-                }
-
-            } else {
-                $_SESSION['adresse'] = $_GET['adresse_input'];
+                $dataBaseController = new DataBaseController();
+                $dataBaseController->affectAdresse($coord);
+                header('Location: /');
+             } else {
+                $_SESSION['adresse'] = $_POST['adresse_input'];
                 $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
             }
         } else {
             $coord = $this->setUserPosition($_SESSION['adresse']. ' ' .$_SESSION['city']);
         }
 
-        //$coord = $this->setUserPosition($_SESSION['city']);
-
-        /*if (!isset($_SESSION['city'])) {
-            $_SESSION['city'] = "Orléans";
-            $coord = $this->setUserPosition($_SESSION['city']);
-            $dataBaseController = new DataBaseController();
-            $dataBaseController->affectAdresse($coord);
-            header('Location: /');
-        } elseif (isset($_GET['adress_input']) && !empty($_GET['adress_input']) &&
-                 (isset($_SESSION['city']) && $_GET['adress_input'] != $_SESSION['city'])) {
-            $_SESSION['city'] = $_GET["adress_input"];
-            $coord = $this->setUserPosition($_SESSION['city']);
-            $dataBaseController = new DataBaseController();
-            $dataBaseController->affectAdresse($coord);
-            header('Location: /');
-        } else {
-            $coord = $this->setUserPosition($_SESSION['city']);
-        }*/
-
-        if(!isset($_POST['search'])) {
+         if(!isset($_POST['search'])) {
             $_POST['search'] = "null";
         }
 

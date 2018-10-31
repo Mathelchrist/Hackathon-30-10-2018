@@ -151,7 +151,7 @@
                       </button>
                   </div>
                   <div class="modal-body">
-                      <form class="form-group text-center" method="GET" action="/">
+                      <form class="form-group text-center" method="POST" action="/">
                           <input type="text" class="my-2" name="adresse_input" value="{{ session.adresse ?? '' }}" placeholder="N° + rue" />
                           <input type="text" class="my-2" name="city_input" value="{{ session.city ?? '' }}" placeholder="Ville" />
                           <input type="submit" class="btn btn-warning" name="valider" value="Me déplacer" />
