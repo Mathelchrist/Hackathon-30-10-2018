@@ -15,7 +15,12 @@
                 <a class="addplayer col" href='/addPlayer'>Ajouter un monstre</a>
             </div>
         </div>
+
 <h1 class="titleMonster">Les monstres</h1>
+        {% if session is empty %}
+        <p class="centration">Veuillez choisir un monstre</p>
+        {% endif %}
+
     <ul>
         {% for nom in noms %}
 

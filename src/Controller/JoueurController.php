@@ -58,6 +58,9 @@ class JoueurController extends AbstractController
     }
     public function delete(int $id)
     {
+        session_start();
+        session_unset();
+        session_destroy();
         $totoManager = new BonbondexManager($this->getPdo());
         $totoManager->delete($id);
         $joueurManager = new JoueurManager($this->getPdo());
