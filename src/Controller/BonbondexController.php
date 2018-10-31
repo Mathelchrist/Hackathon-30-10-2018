@@ -4,6 +4,9 @@ namespace Controller;
 use http\Env\Request;
 use Model\Bonbon;
 use Model\BonbonManager;
+use Model\Bonbondex;
+use Model\BonbondexManager;
+
 
 class BonbondexController extends AbstractController
 {
@@ -38,12 +41,28 @@ class BonbondexController extends AbstractController
         return $this->twig->render('/bonbondex.html.twig', ['bonbons' => $bonbons]);
     }
 
+
+    public function add()
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $bonbondexManager = new BonbondexManager($this->getPdo());
+            $bonbondex = new Bonbondex();
+            $bonbondex->setId($_POST['bonbon_id']);
+            $id = $bonbondexManager->insert($bonbondex);
+            header('Location:/bonbondex');
+        }
+
+        return $this->twig->render('bonbondex.html.twig');
+    }
+
     public function getAdresse($latitude, $longitude)
     {
         $url = "https://api-adresse.data.gouv.fr/reverse/?lon=".$longitude."&lat=".$latitude;
         $json = file_get_contents($url);
         $json = json_decode($json);
         $adresse = 'cimetière :D';
+
 
         if (!empty($json)) {
             if (isset($json->features[0]->properties->label)) {
