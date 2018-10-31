@@ -4,6 +4,9 @@ namespace Controller;
 use http\Env\Request;
 use Model\Bonbon;
 use Model\BonbonManager;
+use Model\Bonbondex;
+use Model\BonbondexManager;
+
 
 class BonbondexController extends AbstractController
 {
