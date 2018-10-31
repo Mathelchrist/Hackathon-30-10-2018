@@ -46,7 +46,10 @@
         text-align: center;
         font-size: 3vw;
         font-family: 'Eater', cursive;
-        margin-right: 15%;;
+        margin-right: 15%;
+    }
+    .addplayer{
+
     }
 }
 .titleMonster
@@ -59,7 +62,7 @@
 }
 .addmonster
 {
-    margin-bottom: 25vh;
+    margin-bottom: 5vh;
     margin-top: 15vh;
     font-size: 4vw;
 }
@@ -68,14 +71,11 @@
 {
     color: orange;
     text-align: center;
-    font-size: 15px;
+    font-size: 2vh;
     font-family: 'Eater', cursive;
     position : absolute;
     margin-bottom: 5vh;
     list-style: none;
-
-
-
 }
 .addplayer:hover{
     text-decoration: none;
@@ -102,7 +102,37 @@
     display: flex;
     justify-content: left;
 }
-.dead
+.hellCenter
 {
-
+    height: 4vh;
+text-align: center;
+}
+.dead:hover
+{
+    text-decoration: none;
+    color: orangered;
+}
+.alive:hover
+{
+    text-decoration: none;
+    color: orangered;
+}
+.dead, .alive{
+    z-index: 999;
+    display: block;
+    left: 50%;
+    bottom: 0;
+}
+.titleMonster p
+{
+    margin-bottom: 20vh;
+}
+.monsterImg
+{
+    margin-bottom: 5vh;
+    height: 18vh;
+    width: auto;
+}
+.toto{
+    margin-top: 5vh;
 }

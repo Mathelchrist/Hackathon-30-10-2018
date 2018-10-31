@@ -89,3 +89,6 @@ body{
     height: 12vh;
     width: auto;
 }
+a img {
+    border: none;
+}
