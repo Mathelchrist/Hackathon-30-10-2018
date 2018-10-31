@@ -12,9 +12,9 @@ body{
 {
     font-size: calc(30px + (106 - 30) * ((100vw - 300px) / (1600 - 300)));
     font-weight: bold;
-    color: orangered;
+    color: orange;
     margin-top: 1em;
-    font-family: 'Nosifer', cursive;
+    font-family: 'Eater', cursive;
 }
 
 .bonbondex h5 {
