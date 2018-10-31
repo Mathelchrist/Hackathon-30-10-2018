@@ -20,7 +20,6 @@ class MapController extends AbstractController
  {
     public function index()
     {
-        session_start();
         if(!($_SESSION['id'])) {
             header('location: /players');
             exit();

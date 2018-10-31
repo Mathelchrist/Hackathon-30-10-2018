@@ -29,7 +29,6 @@ class MapManager extends AbstractManager
 
     public function selectDatas($field = '', $order = 'ASC'): array
     {
-        session_start();
 
         $query = 'SELECT
         bonbon.id,
