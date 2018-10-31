@@ -30,6 +30,10 @@ h1{
 
 }
 
+.map_header {
+    height: 80px;
+}
+
 .adress_button,
 .adress_button img {
     position: fixed;
@@ -45,4 +49,8 @@ h1{
 
 .adress_input {
     display: none;
+    min-width: 350px;
+    width: 70vw;
+    height: 50px;
+    margin-top: 40px;
 }
