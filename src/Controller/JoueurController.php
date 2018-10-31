@@ -36,8 +36,9 @@ class JoueurController extends AbstractController
     {
         $joueurManager = new JoueurManager($this->getPdo());
         $noms = $joueurManager->selectAll();
-
-
+        session_unset();
+        session_destroy();
+        session_start();
         if (isset($_POST['id'])){
         $_SESSION['id'] = $_POST['id'];
         $_SESSION['nom'] = $_POST['nom'];

@@ -15,6 +15,8 @@ class BonbondexController extends AbstractController
         $bonbonManager = new BonbonManager($this->getPdo());
         $bonbons = $bonbonManager->selectAllBonbon();
 
+        $coord = $this->setUserPosition($_SESSION['city']);
+
         for ($i=0; $i < count($bonbons); $i++) {
             if (!empty($bonbons[$i]['longitudebonbonpris'])) {
                 $lng1 = $bonbons[$i]['longitudebonbonpris'];
@@ -28,8 +30,8 @@ class BonbondexController extends AbstractController
             $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
             $rlo1 = deg2rad($lng1);
             $rla1 = deg2rad($lat1);
-            $rlo2 = deg2rad(1.909251);
-            $rla2 = deg2rad(47.902964);
+            $rlo2 = deg2rad($coord[1]);
+            $rla2 = deg2rad($coord[0]);
             $dlo = ($rlo2 - $rlo1) / 2;
             $dla = ($rla2 - $rla1) / 2;
             $a = (sin($dla) * sin($dla)) + cos($rla1) * cos($rla2) * (sin($dlo) * sin($dlo));
@@ -44,7 +46,6 @@ class BonbondexController extends AbstractController
 
     public function add()
     {
-        var_dump($_POST);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $bonbondexManager = new BonbondexManager($this->getPdo());
             $bonbondex = new Bonbondex();
