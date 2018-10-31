@@ -47,4 +47,12 @@ class BonbondexManager extends AbstractManager
             return $this->pdo->lastInsertId();
         }
     }
+
+    public function delete(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM $this->table WHERE joueur_id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
