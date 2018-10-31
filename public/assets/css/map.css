@@ -28,3 +28,27 @@ h1,h2, p{
     transform: translate(-50%);
 
 }
+
+.map_header {
+    height: 90px;
+}
+
+.adress_button,
+.adress_button img {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 8vw;;
+    height: 10vh;;
+    min-width: 80px;
+    min-height: 50px;
+    background-color: transparent;
+    border: 0;
+}
+
+.adress_input {
+    display: none;
+    min-width: 350px;
+    width: 80vw;
+    height: 50px;
+}

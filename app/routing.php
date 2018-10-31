@@ -7,6 +7,7 @@ $routes = [
 
     'DataBase' => [
         ['fillInDataBase', '/database', 'GET'],
+        ['affectAdresse', '/affectAdresse', 'GET'],
     ],
 
     'Option' => [

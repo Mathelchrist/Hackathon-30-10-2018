@@ -31,8 +31,8 @@ class MapManager extends AbstractManager
     {
         $query = 'SELECT
         bonbondex.id AS bonbon_id,
-        bonbondex.longitude,
-        bonbondex.latitude,
+        bonbondex.longitude AS longitude,
+        bonbondex.latitude AS latitude,
         bonbon.id,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,

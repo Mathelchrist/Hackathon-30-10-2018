@@ -19,8 +19,9 @@
 
 			// On initialise la latitude et la longitude de Paris (centre de la carte)
 			
-      let latPos = 47.8322;
-      let lonPos = 1.92759;
+      let latPos = {{ latPos }};
+      let lonPos = {{ lonPos }};
+
       let lat = 0;
       let lon = 0;
       let markers = [];
@@ -73,7 +74,8 @@
               if (distanceBetween(latPos, lonPos, lat, lon) <= catchDistance) {
               popupContent += "<form method='post' action='/'>" +
                   "<input type='hidden' value='{{data.bonbon_id}}' name='bonbon_id' />" +
-                  "<input type='hidden' value='{{data.adresse_id}}' name='adresse_id' />" +
+                  "<input type='hidden' value='{{data.longitude}}' name='longitude' />" +
+                  "<input type='hidden' value='{{data.latitude}}' name='latitude' />" +
                   "<button name=''>Je l ai !</button>" + 
                   "</form>"
               }
@@ -110,14 +112,44 @@
         var pi = Math.PI;
         return degrees * (pi/180);
       }
+        
 		</script>
 
 <section>
+  <div class="map_header">
     <h1 >BONBONDEX</h1>
-    <p class="mt-3">Bienvenue {{ session }}</p>
-<div id="map"></div>
-<span class="candy align-bottom">
-            <a href="/option"><img src="assets/images/ico_candy.png" alt="candy" height="50vh" width="auto"></a>
-        </span>
-    </section>
+    <p class="mt-3">Bienvenue {{ session }}</p>  
+    <button class="adress_button" onclick="showAdressInput()"><img src="/assets/images/bat_search.png" /></button>
+    <form class="form-group text-center" method="GET" action="">
+        <input class="adress_input" type="text" name="adress_input" value="" />
+    </form>
+  </div>
+
+  <div id="map">
+  </div>
+    <span class="candy align-bottom">
+        <a href="/option"><img src="assets/images/ico_candy.png" alt="candy" height="50vh" width="auto"></a>
+    </span>
+  </section>
+
+    <script>
+        let inputElt = $(".adress_input");
+
+    // Afficher / cahcer le formulaire par appui sur le bouton
+    function showAdressInput() {
+      if(inputElt.css("display") == "inline") {
+        inputElt.css("display", "none");
+      } else if(inputElt.css("display") == "none") {
+        inputElt.css("display","inline");
+      }
+    }
+
+        inputElt.keydown(function(key) {
+          if(key.keyCode == 13) {
+            //key.preventDefault();
+            let search = inputElt[0].value;
+          }
+          
+        });
+        </script>
 {% endblock %}
