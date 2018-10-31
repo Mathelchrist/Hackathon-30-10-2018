@@ -11,7 +11,6 @@ body{
 .bonbondex h1
 {
     font-size: calc(30px + (106 - 30) * ((100vw - 300px) / (1600 - 300)));
-    font-weight: bold;
     color: orange;
     margin-top: 1em;
     font-family: 'Eater', cursive;
