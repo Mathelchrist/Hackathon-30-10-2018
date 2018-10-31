@@ -24,8 +24,15 @@ body{
 }
 
 .bonbondex .search {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
+    box-shadow: 5px 5px 5px orangered;
+}
+
+.bonbondex .search:hover {
+    box-shadow: 2px 8px 40px orangered;
+}
+
+.bonbondex .found {
+    box-shadow: 5px 5px 5px #000000;
 }
 
 .bonbondex .search
@@ -57,10 +64,12 @@ body{
 
 .bonbondex .found
 {
-    box-shadow: 2px 8px 10px orangered;
     width: 320px;
     word-wrap: break-word;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
 }
+
 .backhome
 {
 

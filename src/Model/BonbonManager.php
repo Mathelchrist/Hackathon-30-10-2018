@@ -29,8 +29,10 @@ class BonbonManager extends AbstractManager
 
     public function selectAllBonbon(): array
     {
-        $query = 'SELECT adresse.adresse, adresse.code_postal,adresse.ville, adresse.longitude, adresse.latitude, bonbon.id, bonbon.nom, bonbon.image_url  FROM '. $this->table.
-                    ' JOIN adresse ON adresse.id=quantite.adresse_id JOIN bonbon ON bonbon.id=quantite.bonbon_id';
+        $query = "SELECT b.id, x.quantite, x.longitude AS longitudebonbonpris, x.latitude AS latitudebonbonpris, b.nom, b.image_url, a.longitude, a.latitude FROM joueur j "
+            ." JOIN bonbondex x ON j.id = x.joueur_id AND j.id = 1"
+            ." RIGHT JOIN bonbon b ON x.bonbon_id = b.id"
+            ." JOIN adresse a ON a.bonbon_id = b.id";
 
         return $this->pdo->query($query, \PDO::FETCH_ASSOC)->fetchAll();
     }

@@ -48,27 +48,22 @@ class CandyManager extends AbstractManager
         }
     }
 
-    public function randomAddress() : int
-    {
-        $query = 'SELECT SQL_NO_CACHE id FROM adresse WHERE RAND() > 0.9 ORDER BY RAND() LIMIT 1';
-        $result = $this->pdo->query($query, \PDO::FETCH_ASSOC)->fetch();
-
-        return $result['id'];
-    }
-
-
-    public function affectAddress(int $bonbonID)
-    {
-        $randomAddressID = $this->randomAddress();
-
-        $statement = $this->pdo->prepare(
-          "INSERT INTO quantite (`bonbon_id`, `adresse_id`, `quantite`) VALUES (:bonbonID, :addressID, :quantite)");
-        $statement->bindValue('bonbonID', $bonbonID, \PDO::PARAM_INT);
-        $statement->bindValue('addressID', $randomAddressID, \PDO::PARAM_INT);
-        $statement->bindValue('quantite', 1, \PDO::PARAM_INT);
-
+    public function truncateAdresse() {
+        $statement = $this->pdo->prepare("TRUNCATE TABLE adresse");
         $statement->execute();
     }
 
-}
+    public function affectAddress(int $id, float $latitude, float $longitude)
+    {
+        $statement = $this->pdo->prepare(
+            "INSERT INTO adresse (`bonbon_id`, `quantite`, `latitude`, `longitude`) 
+                       VALUES (:bonbonID, :quantite, :latitude, :longitude)");
+        $statement->bindValue('bonbonID', $id, \PDO::PARAM_INT);
+        $statement->bindValue('quantite', 1, \PDO::PARAM_INT);
+        $statement->bindValue('latitude', $latitude, \PDO::PARAM_STR);
+        $statement->bindValue('longitude', $longitude, \PDO::PARAM_STR);
 
+
+        $statement->execute();
+    }
+}
