@@ -29,17 +29,50 @@ class MapManager extends AbstractManager
 
     public function selectDatas($field = '', $order = 'ASC'): array
     {
+        session_start();
+
         $query = 'SELECT
-        bonbondex.id AS bonbon_id,
-        bonbondex.longitude AS longitude,
-        bonbondex.latitude AS latitude,
         bonbon.id,
         bonbon.nom AS bonbon_nom,
         bonbon.image_url AS bonbon_image,
+        adresse.longitude AS longitude,
+        adresse.latitude AS latitude,
         joueur.nom AS joueur_nom
-        FROM ' . self::TABLE . '
-        JOIN bonbon ON bonbon_id = bonbon.id
-        JOIN joueur ON bonbondex.joueur_id = joueur.id';
+        FROM joueur
+        JOIN bonbondex ON joueur.id = bonbondex.joueur_id 
+        RIGHT OUTER JOIN bonbon ON bonbondex.bonbon_id = bonbon.id
+        JOIN adresse ON adresse.bonbon_id = bonbon.id
+        WHERE joueur.id IS NULL or joueur.id != '. $_SESSION["id"]
+        . ' LIMIT 20';
+
+
+       /*  'SELECT b.id,
+         x.quantite,
+          x.longitude AS longitudebonbonpris,
+           x.latitude AS latitudebonbonpris,
+            b.nom,
+             b.image_url,
+              a.longitude,
+               a.latitude 
+               FROM joueur j "
+            ." JOIN bonbondex x ON j.id = x.joueur_id AND j.id = 1"
+            ." RIGHT JOIN bonbon b ON x.bonbon_id = b.id"
+            ." JOIN adresse a ON a.bonbon_id = b.id'
+ */
+
+/* SELECT distinct
+bonbon.id,
+bonbon.nom,
+bonbon.image_url,
+adresse.longitude,
+adresse.latitude
+FROM bonbon
+JOIN adresse ON adresse.bonbon_id = bonbon.id
+LEFT OUTER JOIN bonbondex ON bonbondex.bonbon_id = bonbon.id
+WHERE bonbondex.bonbon_id = bonbon.id
+ */
+
+
         if ($field) {
             $query .= ' ORDER BY ' . $field . ' ' . $order;
         }
