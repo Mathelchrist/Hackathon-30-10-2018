@@ -15,11 +15,10 @@ class OptionController extends AbstractController
 {
     public function showOption()
     {
-        $toto = session_start();
         if(!($_SESSION['id'])) {
             header('location: /players');
             exit();
         }
-        return $this->twig->render('Option/item.html.twig', ['toto' => $toto]);
+        return $this->twig->render('Option/item.html.twig');
     }
 }

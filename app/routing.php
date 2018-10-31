@@ -2,7 +2,7 @@
 // routing.php
 $routes = [
     'Map' => [
-        ['index', '/', 'GET'],
+        ['index', '/', ['GET', 'POST']],
     ],
 
     'DataBase' => [

@@ -18,7 +18,6 @@ class JoueurController extends AbstractController
 
     public function add()
     {
-        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!empty(trim($_POST['nom']))) {
             $joueurManager = new JoueurManager($this->getPdo());
@@ -35,7 +34,6 @@ class JoueurController extends AbstractController
 
     public function index()
     {
-        session_start();
         $joueurManager = new JoueurManager($this->getPdo());
         $noms = $joueurManager->selectAll();
 
@@ -58,7 +56,6 @@ class JoueurController extends AbstractController
     }
     public function delete(int $id)
     {
-        session_start();
         session_unset();
         session_destroy();
         $totoManager = new BonbondexManager($this->getPdo());
