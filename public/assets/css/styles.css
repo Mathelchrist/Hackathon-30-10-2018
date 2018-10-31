@@ -89,3 +89,20 @@ body{
     height: 12vh;
     width: auto;
 }
+
+.map_header h1
+{
+    font-size: calc(30px + (50 - 30) * ((100vw - 300px) / (1600 - 300)));
+}
+
+@media (max-width: 575.98px)
+{
+    .map_header h1 {
+        text-align: left;
+        margin-left: 15px;
+    }
+    .map_header p{
+        text-align: left;
+        margin-left: 15px;
+    }
+}
